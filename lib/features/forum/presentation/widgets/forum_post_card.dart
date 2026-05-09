@@ -58,6 +58,7 @@ class ForumPostCard extends StatelessWidget {
               Row(
                 children: [
                   Expanded(
+                    flex: 2,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -74,7 +75,9 @@ class ForumPostCard extends StatelessWidget {
                         const SizedBox(height: 6),
 
                         Text(
-                          post.postedBy,
+                          post.name,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                           style: const TextStyle(
                             fontWeight: FontWeight.w600,
                             color: AppColors.primary,
@@ -87,7 +90,7 @@ class ForumPostCard extends StatelessWidget {
 
                   Expanded(
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           'LAST POST',
@@ -106,6 +109,34 @@ class ForumPostCard extends StatelessWidget {
                           style: const TextStyle(
                             color: AppColors.textSecondary,
                             fontWeight: FontWeight.w500,
+                            fontSize: 13,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          'POSTS',
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Colors.grey.shade500,
+                            letterSpacing: 0.7,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+
+                        const SizedBox(height: 6),
+
+                        Text(
+                          post.postCount.toString(),
+                          style: const TextStyle(
+                            color: AppColors.textPrimary,
+                            fontWeight: FontWeight.w600,
                             fontSize: 13,
                           ),
                         ),

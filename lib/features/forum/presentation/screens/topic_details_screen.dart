@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/app_colors.dart';
 
 import '../../domain/entities/forum_post.dart';
 import '../widgets/reply_bottom.dart';
@@ -11,8 +12,22 @@ class TopicDetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(post.topic)),
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        elevation: 0,
+        // centerTitle: true,
+        title: Text(
+          (post.topic),
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+            letterSpacing: 0.5,
+          ),
+        ),
+      ),
 
+      // appBar: AppBar(title: Text(post.topic)),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(16),
@@ -39,7 +54,7 @@ class TopicDetailsScreen extends StatelessWidget {
 
                       children: [
                         Text(
-                          post.postedBy,
+                          post.name,
 
                           style: const TextStyle(
                             fontWeight: FontWeight.w700,
@@ -104,15 +119,8 @@ class TopicDetailsScreen extends StatelessWidget {
                 const SizedBox(height: 10),
 
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    _actionButton(Icons.thumb_up_off_alt, '24'),
-
-                    const SizedBox(width: 18),
-
-                    _actionButton(Icons.thumb_down_off_alt, ''),
-
-                    const Spacer(),
-
                     OutlinedButton.icon(
                       onPressed: () {
                         showReplyBottomSheet(context);
@@ -144,27 +152,6 @@ class TopicDetailsScreen extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-
-  static Widget _actionButton(IconData icon, String count) {
-    return Row(
-      children: [
-        Icon(icon, size: 21, color: const Color(0xFF6B7280)),
-
-        if (count.isNotEmpty) ...[
-          const SizedBox(width: 5),
-
-          Text(
-            count,
-
-            style: const TextStyle(
-              color: Color(0xFF111827),
-              fontWeight: FontWeight.w600,
-            ),
-          ),
-        ],
-      ],
     );
   }
 }

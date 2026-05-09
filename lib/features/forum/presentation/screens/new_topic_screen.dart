@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../../../core/constants/app_colors.dart';
 
 class NewTopicScreen extends StatelessWidget {
   const NewTopicScreen({super.key});
@@ -6,8 +7,22 @@ class NewTopicScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('New Topic')),
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        elevation: 0,
+        // centerTitle: true,
+        title: const Text(
+          'Post New',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+            letterSpacing: 0.5,
+          ),
+        ),
+      ),
 
+      // appBar: AppBar(title: const Text('New Topic')),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.all(16),

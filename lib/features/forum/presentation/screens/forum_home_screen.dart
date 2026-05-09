@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:forum/core/constants/app_colors.dart';
 
 import '../../data/mock/forum_mock_data.dart';
 import '../widgets/forum_post_card.dart';
@@ -11,8 +12,35 @@ class ForumHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Forum')),
+      appBar: AppBar(
+        backgroundColor: AppColors.primary,
+        elevation: 0,
+        // centerTitle: true,
+        title: const Text(
+          'Forum',
+          style: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontSize: 20,
+            color: Colors.white,
+            letterSpacing: 0.5,
+          ),
+        ),
+      ),
 
+      // appBar: AppBar(
+      //   title: const Text(
+      //     'Forum',
+      //     style: TextStyle(
+      //       fontWeight: FontWeight.w700,
+      //       fontSize: 20,
+      //       color: Colors.white,
+      //     ),
+      //     // selectionColor: Colors.white,
+      //   ),
+
+      //   backgroundColor: AppColors.primary,
+      //   foregroundColor: Colors.white,
+      // ),
       body: ListView.builder(
         physics: const BouncingScrollPhysics(),
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
@@ -37,7 +65,7 @@ class ForumHomeScreen extends StatelessWidget {
 
       floatingActionButton: FloatingActionButton(
         elevation: 1,
-        backgroundColor: const Color(0xFF991B1B),
+        backgroundColor: AppColors.primary,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         onPressed: () => Navigator.push(
           context,
@@ -52,7 +80,7 @@ class ForumHomeScreen extends StatelessWidget {
         elevation: 10,
         currentIndex: 0,
 
-        selectedItemColor: const Color(0xFF991B1B),
+        selectedItemColor: AppColors.primary,
         unselectedItemColor: Colors.grey.shade400,
 
         selectedFontSize: 12,

@@ -75,13 +75,13 @@ void showReplyBottomSheet(BuildContext context) {
                   padding: const EdgeInsets.all(16),
 
                   children: const [
-                    CommentItem(
+                    ExpandableCommentItem(
                       name: 'Balachander (1171)',
 
                       time: '2h ago',
 
                       comment:
-                          'Great initiative! Looking forward to the festival. How can we volunteer for the event?',
+                          'Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?GreGreat initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?at initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?',
 
                       avatar:
                           'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100',
@@ -89,7 +89,7 @@ void showReplyBottomSheet(BuildContext context) {
 
                     SizedBox(height: 20),
 
-                    CommentItem(
+                    ExpandableCommentItem(
                       name: 'Vanaja Varma (1031)',
 
                       time: '5h ago',
@@ -185,12 +185,35 @@ void showReplyBottomSheet(BuildContext context) {
                         );
                       },
 
-                      child: const Text(
-                        'Send',
+                      child: OutlinedButton(
+                        onPressed: () {
+                          Navigator.pop(context);
 
-                        style: TextStyle(
-                          color: Color(0xFF991B1B),
-                          fontWeight: FontWeight.w700,
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text('Reply posted successfully!'),
+                            ),
+                          );
+                        },
+
+                        style: OutlinedButton.styleFrom(
+                          foregroundColor: const Color(0xFF991B1B),
+
+                          side: const BorderSide(color: Color(0xFF991B1B)),
+
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 18,
+                            vertical: 12,
+                          ),
+
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+
+                        child: const Text(
+                          'Send',
+                          style: TextStyle(fontWeight: FontWeight.w700),
                         ),
                       ),
                     ),

@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import '../../../../core/constants/app_colors.dart';
 
-class CommentItem extends StatelessWidget {
+class ExpandableCommentItem extends StatefulWidget {
   final String name;
   final String time;
   final String comment;
   final String avatar;
 
-  const CommentItem({
+  const ExpandableCommentItem({
     super.key,
     required this.name,
     required this.time,
@@ -16,11 +15,20 @@ class CommentItem extends StatelessWidget {
   });
 
   @override
+  State<ExpandableCommentItem> createState() => _ExpandableCommentItemState();
+}
+
+class _ExpandableCommentItemState extends State<ExpandableCommentItem> {
+  bool isExpanded = false;
+
+  @override
   Widget build(BuildContext context) {
+    final bool shouldShowSeeMore = widget.comment.length > 180;
+
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        CircleAvatar(radius: 16, backgroundImage: NetworkImage(avatar)),
+        CircleAvatar(radius: 16, backgroundImage: NetworkImage(widget.avatar)),
 
         const SizedBox(width: 12),
 
@@ -30,21 +38,22 @@ class CommentItem extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Text(
-                    name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 13,
-                      color: AppColors.textPrimary,
+                  Expanded(
+                    child: Text(
+                      widget.name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 13,
+                        color: Color(0xFF111827),
+                      ),
                     ),
                   ),
-
                   const SizedBox(width: 8),
 
                   Text(
-                    time,
+                    widget.time,
                     style: const TextStyle(
-                      color: AppColors.greyText,
+                      color: Color(0xFF6B7280),
                       fontSize: 11,
                     ),
                   ),
@@ -54,36 +63,37 @@ class CommentItem extends StatelessWidget {
               const SizedBox(height: 4),
 
               Text(
-                comment,
+                widget.comment,
+                maxLines: isExpanded ? null : 4,
+                overflow: isExpanded
+                    ? TextOverflow.visible
+                    : TextOverflow.ellipsis,
                 style: const TextStyle(
                   fontSize: 14,
                   height: 1.4,
-                  color: AppColors.textSecondary,
+                  color: Color(0xFF374151),
                 ),
               ),
 
-              const SizedBox(height: 8),
-
-              Row(
-                children: [
-                  const Text(
-                    'Reply',
-                    style: TextStyle(
-                      color: AppColors.greyText,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
+              if (shouldShowSeeMore)
+                Padding(
+                  padding: const EdgeInsets.only(top: 6),
+                  child: GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        isExpanded = !isExpanded;
+                      });
+                    },
+                    child: Text(
+                      isExpanded ? 'See less' : '...See more',
+                      style: const TextStyle(
+                        color: Color(0xFF6B7280),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w700,
+                      ),
                     ),
                   ),
-
-                  const SizedBox(width: 16),
-
-                  Icon(
-                    Icons.favorite_border,
-                    size: 14,
-                    color: Colors.grey.shade400,
-                  ),
-                ],
-              ),
+                ),
             ],
           ),
         ),
