@@ -4,7 +4,6 @@ import 'package:forum/core/constants/app_colors.dart';
 import '../../data/mock/forum_mock_data.dart';
 import '../widgets/forum_post_card.dart';
 import 'new_topic_screen.dart';
-import 'topic_details_screen.dart';
 
 class ForumHomeScreen extends StatelessWidget {
   const ForumHomeScreen({super.key});
@@ -12,12 +11,15 @@ class ForumHomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFF3F4F6),
+
       appBar: AppBar(
         backgroundColor: AppColors.primary,
         elevation: 0,
-        // centerTitle: true,
+
         title: const Text(
           'Forum',
+
           style: TextStyle(
             fontWeight: FontWeight.w700,
             fontSize: 20,
@@ -27,61 +29,54 @@ class ForumHomeScreen extends StatelessWidget {
         ),
       ),
 
-      // appBar: AppBar(
-      //   title: const Text(
-      //     'Forum',
-      //     style: TextStyle(
-      //       fontWeight: FontWeight.w700,
-      //       fontSize: 20,
-      //       color: Colors.white,
-      //     ),
-      //     // selectionColor: Colors.white,
-      //   ),
-
-      //   backgroundColor: AppColors.primary,
-      //   foregroundColor: Colors.white,
-      // ),
-      body: ListView.builder(
+      body: ListView.separated(
         physics: const BouncingScrollPhysics(),
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+
+        padding: const EdgeInsets.only(top: 10, bottom: 90),
+
         itemCount: mockPosts.length,
+
+        separatorBuilder: (context, index) {
+          return const SizedBox(height: 8);
+        },
+
         itemBuilder: (context, index) {
           final post = mockPosts[index];
 
-          return Padding(
-            padding: const EdgeInsets.only(bottom: 12),
-            child: ForumPostCard(
-              post: post,
-              onTap: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => TopicDetailsScreen(post: post),
-                ),
-              ),
-            ),
+          return ForumPostCard(
+            post: post,
+
+            // Feed style → no navigation
+            onTap: () {},
           );
         },
       ),
 
       floatingActionButton: FloatingActionButton(
-        elevation: 1,
+        elevation: 2,
         backgroundColor: AppColors.primary,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(builder: (_) => const NewTopicScreen()),
-        ),
-        child: const Icon(Icons.add, color: Colors.white, size: 26),
+
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(18)),
+
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (_) => const NewTopicScreen()),
+          );
+        },
+
+        child: const Icon(Icons.add, color: Colors.white, size: 28),
       ),
 
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
+
         backgroundColor: Colors.white,
-        elevation: 10,
+
         currentIndex: 0,
 
         selectedItemColor: AppColors.primary,
-        unselectedItemColor: Colors.grey.shade400,
+        unselectedItemColor: Colors.grey,
 
         selectedFontSize: 12,
         unselectedFontSize: 12,
@@ -93,20 +88,25 @@ class ForumHomeScreen extends StatelessWidget {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
+            activeIcon: Icon(Icons.home_rounded),
             label: 'Home',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.people_outline),
             label: 'Members',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.newspaper_outlined),
             label: 'News',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.image_outlined),
             label: 'Gallery',
           ),
+
           BottomNavigationBarItem(icon: Icon(Icons.more_horiz), label: 'More'),
         ],
       ),

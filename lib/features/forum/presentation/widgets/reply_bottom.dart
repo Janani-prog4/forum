@@ -9,24 +9,24 @@ void showReplyBottomSheet(BuildContext context) {
     backgroundColor: Colors.white,
 
     shape: const RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
     ),
 
     builder: (context) {
       return DraggableScrollableSheet(
-        initialChildSize: 0.6,
-        minChildSize: 0.4,
-        maxChildSize: 0.9,
+        initialChildSize: 0.72,
+        minChildSize: 0.45,
+        maxChildSize: 0.95,
         expand: false,
 
         builder: (context, scrollController) {
           return Column(
             children: [
               Container(
-                margin: const EdgeInsets.symmetric(vertical: 12),
+                margin: const EdgeInsets.only(top: 12, bottom: 10),
 
                 height: 4,
-                width: 40,
+                width: 42,
 
                 decoration: BoxDecoration(
                   color: Colors.grey.shade300,
@@ -37,42 +37,50 @@ void showReplyBottomSheet(BuildContext context) {
 
               Padding(
                 padding: const EdgeInsets.symmetric(
-                  horizontal: 16,
-                  vertical: 8,
+                  horizontal: 18,
+                  vertical: 6,
                 ),
 
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
                   children: [
                     const Text(
                       'Replies',
 
                       style: TextStyle(
                         fontWeight: FontWeight.w700,
-                        fontSize: 16,
+                        fontSize: 18,
                         color: Color(0xFF111827),
                       ),
                     ),
 
-                    IconButton(
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
+                    const Spacer(),
 
-                      icon: const Icon(Icons.close, size: 20),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFF3F4F6),
+
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+
+                      child: IconButton(
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+
+                        icon: const Icon(Icons.close, size: 18),
+                      ),
                     ),
                   ],
                 ),
               ),
 
-              const Divider(height: 1),
+              Divider(height: 1, color: Colors.grey.shade200),
 
               Expanded(
                 child: ListView(
                   controller: scrollController,
 
-                  padding: const EdgeInsets.all(16),
+                  padding: const EdgeInsets.fromLTRB(16, 18, 16, 24),
 
                   children: const [
                     ExpandableCommentItem(
@@ -81,13 +89,13 @@ void showReplyBottomSheet(BuildContext context) {
                       time: '2h ago',
 
                       comment:
-                          'Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?GreGreat initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?at initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?Great initiative! Looking forward to the festival. How can we volunteer for the event?',
+                          'Great initiative! Looking forward to the festival. How can we volunteer for the event? Great initiative! Looking forward to the festival. How can we volunteer for the event? Great initiative! Looking forward to the festival. How can we volunteer for the event? Great initiative! Looking forward to the festival. How can we volunteer for the event? Great initiative! Looking forward to the festival. How can we volunteer for the event? Great initiative! Looking forward to the festival. How can we volunteer for the event?',
 
                       avatar:
                           'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&q=80&w=100',
                     ),
 
-                    SizedBox(height: 20),
+                    SizedBox(height: 22),
 
                     ExpandableCommentItem(
                       name: 'Vanaja Varma (1031)',
@@ -106,28 +114,21 @@ void showReplyBottomSheet(BuildContext context) {
 
               Container(
                 padding: EdgeInsets.only(
-                  left: 16,
-                  right: 16,
+                  left: 14,
+                  right: 14,
                   top: 12,
-
                   bottom: MediaQuery.of(context).viewInsets.bottom + 12,
                 ),
 
                 decoration: BoxDecoration(
                   color: Colors.white,
 
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.05),
-
-                      offset: const Offset(0, -2),
-
-                      blurRadius: 10,
-                    ),
-                  ],
+                  border: Border(top: BorderSide(color: Colors.grey.shade200)),
                 ),
 
                 child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+
                   children: [
                     const CircleAvatar(
                       radius: 18,
@@ -145,37 +146,52 @@ void showReplyBottomSheet(BuildContext context) {
 
                         decoration: BoxDecoration(
                           color: const Color(0xFFF3F4F6),
-
-                          borderRadius: BorderRadius.circular(24),
+                          borderRadius: BorderRadius.circular(26),
                         ),
 
-                        child: const TextField(
+                        child: TextField(
+                          // minLines: 1,
+                          // maxLines: 5,
+                          cursorColor: const Color(0xFF991B1B),
+
                           decoration: InputDecoration(
                             hintText: 'Add a reply...',
 
-                            hintStyle: TextStyle(
+                            hintStyle: const TextStyle(
                               color: Color(0xFF6B7280),
                               fontSize: 14,
                             ),
 
-                            border: InputBorder.none,
+                            filled: true,
+                            fillColor: const Color(0xFFF3F4F6),
 
-                            enabledBorder: InputBorder.none,
-
-                            focusedBorder: InputBorder.none,
-
-                            contentPadding: EdgeInsets.symmetric(vertical: 10),
-
-                            fillColor: Colors.transparent,
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(26),
+                              borderSide: BorderSide.none,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(26),
+                              borderSide: BorderSide.none,
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(26),
+                              borderSide: BorderSide.none,
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 12,
+                              vertical: 12,
+                            ),
                           ),
                         ),
                       ),
                     ),
 
-                    const SizedBox(width: 8),
+                    const SizedBox(width: 10),
 
-                    TextButton(
-                      onPressed: () {
+                    InkWell(
+                      borderRadius: BorderRadius.circular(50),
+
+                      onTap: () {
                         Navigator.pop(context);
 
                         ScaffoldMessenger.of(context).showSnackBar(
@@ -185,35 +201,18 @@ void showReplyBottomSheet(BuildContext context) {
                         );
                       },
 
-                      child: OutlinedButton(
-                        onPressed: () {
-                          Navigator.pop(context);
+                      child: Container(
+                        padding: const EdgeInsets.all(12),
 
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text('Reply posted successfully!'),
-                            ),
-                          );
-                        },
-
-                        style: OutlinedButton.styleFrom(
-                          foregroundColor: const Color(0xFF991B1B),
-
-                          side: const BorderSide(color: Color(0xFF991B1B)),
-
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 18,
-                            vertical: 12,
-                          ),
-
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                        decoration: const BoxDecoration(
+                          color: Color(0xFF991B1B),
+                          shape: BoxShape.circle,
                         ),
 
-                        child: const Text(
-                          'Send',
-                          style: TextStyle(fontWeight: FontWeight.w700),
+                        child: const Icon(
+                          Icons.send_rounded,
+                          color: Colors.white,
+                          size: 18,
                         ),
                       ),
                     ),
